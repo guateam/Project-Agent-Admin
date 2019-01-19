@@ -34,7 +34,11 @@ function errorLog (err) {
 // 创建一个 axios 实例
 const service = axios.create({
   baseURL: process.env.VUE_APP_API,
-  timeout: 5000 // 请求超时时间
+  timeout: 5000, // 请求超时时间
+  headers: {
+    'Content-Type': 'application/x-www-form-urlencoded'
+  },
+  responseType: 'json'
 })
 
 // 请求拦截器
@@ -71,8 +75,8 @@ service.interceptors.response.use(
     } else {
       // 有 code 代表这是一个后端接口 可以进行进一步的判断
       switch (code) {
-        case 0:
-          // [ 示例 ] code === 0 代表没有错误
+        case 1:
+          // code === 1 代表没有错误
           return dataAxios.data
         case 'xxx':
           // [ 示例 ] 其它和后台约定的 code
