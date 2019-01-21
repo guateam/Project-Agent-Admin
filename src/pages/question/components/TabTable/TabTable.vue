@@ -15,7 +15,7 @@
               :label="item.title"
               :prop="item.dataIndex"
               :key="item.key"
-              :width="item.key !== 'action' ? (item.width || 150) : item.width">
+              :width="item.key !== 'action' ? (item.width || 160) : item.width">
               <template slot-scope="scope">
                 <span v-if="item.key !== 'action'">{{scope.row[item.dataIndex]}}</span>
                 <edit-dialog :row="scope.row" :key.sync="item.key" :index="scope.$index" :tabKey="tabKey" @handleMod="handleMod"></edit-dialog>
@@ -30,81 +30,75 @@
 </template>
 
 <script>
-import BasicContainer from '@vue-materials/basic-container'
-import DeleteBalloon from './components/DeleteBalloon'
-import EditDialog from './components/EditDialog'
-import response from './tab-table.json'
+import BasicContainer from '@vue-materials/basic-container';
+import DeleteBalloon from './components/DeleteBalloon';
+import EditDialog from './components/EditDialog';
+import response from './tab-table.json';
 
 export default {
   components: {
     BasicContainer,
     DeleteBalloon,
-    EditDialog
+    EditDialog,
   },
   name: 'TabTable',
 
-  data () {
+  data() {
     return {
       tabKey: 'all',
       dataSource: [],
       tabs: [
         { tab: '全部', key: 'all' },
-        { tab: '已封禁', key: 'inreview' },
-        { tab: '审核中', key: 'released' },
-        { tab: '已拒绝', key: 'rejected' }
+        { tab: '已审核', key: 'inreview' },
+        { tab: '已处理', key: 'rejected' },
       ],
       columns: [
         {
-          title: '用户名',
+          title: '问题',
           dataIndex: 'title',
-          key: 'title'
+          key: 'title',
         },
         {
-          title: '签名',
+          title: '提问者',
           dataIndex: 'author',
-          key: 'author'
+          key: 'author',
         },
         {
           title: '状态',
           dataIndex: 'status',
-          key: 'status'
+          key: 'status',
         },
         {
-          title: '注册时间',
+          title: '发布时间',
           dataIndex: 'date',
-          key: 'date'
-        },
-        {
-          title: '上次登录时间',
-          dataIndex: 'date',
-          key: 'date'
+          key: 'date',
         },
         {
           title: '操作',
-          key: 'action'
-        }
+          key: 'action',
+        },
       ],
-      visible: false
-    }
+      visible: false,
+    };
   },
 
-  created () {},
+  created() {},
 
-  mounted () {
-    this.dataSource = response.data
+  mounted() {
+    this.dataSource = response.data;
   },
 
   methods: {
-    handleClick (tab) {
-      console.log(tab)
+    handleClick(tab) {
+      console.log(tab);
     },
-    handleRemove (index, tabKey) {
-      this.dataSource[tabKey].splice(index, 1)
+    handleRemove(index, tabKey) {
+      this.dataSource[tabKey].splice(index, 1);
     },
-    handleMod (row, index, tabKey) {
-      this.$set(this.dataSource[tabKey], index, row)
-    }
-  }
+    handleMod(row, index, tabKey) {
+      this.$set(this.dataSource[tabKey], index, row);
+    },
+  },
 }
 
 </script>

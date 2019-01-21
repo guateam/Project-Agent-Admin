@@ -14,7 +14,7 @@ import Report from './pages/report';
 import Article from './pages/article';
 import Answer from './pages/answer';
 import Question from './pages/question';
-
+import Expert from './pages/expert';
 import HeaderAside from './layouts/HeaderAside'; // 变量名 routerConfig 为 iceworks 检测关键字
 // ice 会自动在这个变量下添加路由数据
 // 请不要修改名称
@@ -31,20 +31,7 @@ import HeaderAside from './layouts/HeaderAside'; // 变量名 routerConfig 为 i
 // 下面两个页面就是对比 你可以分别观察两个页面上显示的路由数据差异
 
 const routerConfig = [
-  // 刷新页面 必须保留
-  {
-    path: '/refresh',
-    name: 'refresh',
-    layout: HeaderAside,
-    hidden: true,
-    component: {
-      beforeRouteEnter(to, from, next) {
-        next(vm => vm.$router.replace(from.fullPath));
-      },
-
-      render: h => h(),
-    },
-  }, // 页面重定向 必须保留
+  // 页面重定向 必须保留
   {
     path: '/redirect/:route*',
     name: 'redirect',
@@ -58,7 +45,14 @@ const routerConfig = [
       render: h => h(),
     },
   },
-  // 首页 必须 name:index
+  {
+    path: '/question',
+    layout: HeaderAside,
+    component: Question,
+    meta: {
+      title: '问题审核',
+    },
+  }, // 首页 必须 name:index
   {
     path: '/',
     name: 'index',
@@ -70,8 +64,8 @@ const routerConfig = [
     layout: HeaderAside,
     component: User,
     meta: {
-      title: '从业者管理',
-    }
+      title: '普通用户管理',
+    },
   },
   {
     path: '/company',
@@ -79,7 +73,7 @@ const routerConfig = [
     component: Company,
     meta: {
       title: '企业账号',
-    }
+    },
   },
   {
     path: '/verified',
@@ -87,15 +81,20 @@ const routerConfig = [
     component: Verified,
     meta: {
       title: '实名认证',
-    }
-  },
+    },
+  }, // 刷新页面 必须保留
   {
-    path: '/question',
+    path: '/refresh',
+    name: 'refresh',
     layout: HeaderAside,
-    component: Question,
-    meta: {
-      title: '问题审核',
-    }
+    hidden: true,
+    component: {
+      beforeRouteEnter(to, from, next) {
+        next(vm => vm.$router.replace(from.fullPath));
+      },
+
+      render: h => h(),
+    },
   },
   {
     path: '/answer',
@@ -103,7 +102,7 @@ const routerConfig = [
     component: Answer,
     meta: {
       title: '回答审核',
-    }
+    },
   },
   {
     path: '/article',
@@ -111,7 +110,7 @@ const routerConfig = [
     component: Article,
     meta: {
       title: '文章审核',
-    }
+    },
   },
   {
     path: '/report',
@@ -119,7 +118,7 @@ const routerConfig = [
     component: Report,
     meta: {
       title: '举报审核',
-    }
+    },
   },
   {
     path: '/notice',
@@ -127,7 +126,7 @@ const routerConfig = [
     component: Notice,
     meta: {
       title: '通知发布',
-    }
+    },
   },
   {
     path: '/log',
@@ -135,7 +134,15 @@ const routerConfig = [
     component: Log,
     meta: {
       title: '系统日志',
-    }
+    },
+  },
+  {
+    path: '/expert',
+    layout: HeaderAside,
+    component: Expert,
+    meta: {
+      title: '专家账号',
+    },
   },
 ]; // 不参与菜单显示的
 // ice 不会处理这部分
