@@ -1,45 +1,45 @@
 <template>
   <el-popover
-          placement="bottom"
-          width="160"
-          v-model="visible">
-    <p>确认注销改账号？</p>
+    placement="bottom"
+    width="160"
+    v-model="visible">
+    <p>确认删除？</p>
     <div style="text-align: left; margin: 0">
       <el-button type="danger" size="mini" @click="handleHide(1)" round>确认</el-button>
       <el-button size="mini" @click="handleHide(0)" round>关闭</el-button>
     </div>
-    <el-button type="danger" size="mini" round v-if="key === 'action'" slot="reference">注销</el-button>
+    <el-button type="danger" size="mini" round v-if="key === 'action'" slot="reference">删除</el-button>
   </el-popover>
 </template>
 
 <script>
 export default {
-  data () {
+  data() {
     return {
-      visible: false
-    }
+      visible: false,
+    };
   },
   props: {
     key: {
       type: String,
-      default: ''
+      default: '',
     },
     index: {
       type: Number,
-      default: 0
+      default: 0,
     },
     tabKey: {
       type: String,
-      default: ''
-    }
+      default: '',
+    },
   },
   methods: {
-    handleHide (code) {
+    handleHide(code) {
       if (parseInt(code) === 1) {
-        this.$emit('handleRemove', this.index, this.tabKey)
+        this.$emit('handleRemove', this.index, this.tabKey);
       }
-      this.visible = false
-    }
-  }
-}
+      this.visible = false;
+    },
+  },
+};
 </script>

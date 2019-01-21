@@ -1,20 +1,20 @@
 <template>
   <!-- d2-container 文档 https://doc.d2admin.fairyever.com/zh/sys-components/container.html -->
   <d2-container class="page-article">
-    <template slot="header">article</template>
-    <d2-crud/>
-    <template slot="footer">自动生成 1 个组件</template>
+    <template slot="header">文章审核</template>
+    <tag-message-list/>
+    <template slot="footer">联系我们 © 吃瓜小队</template>
   </d2-container>
 </template>
 
 <script>
 // 组件
-import D2Crud1 from './components/D2Crud1/index'
+import TagMessageList from './components/TagMessageList/TagMessageList'
 // 请删除下面代码中你不需要的部分
 export default {
   name: 'article',
   components: {
-    D2Crud1
+    TagMessageList,
   },
   // 数据
   data () {

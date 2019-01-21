@@ -1,9 +1,9 @@
 <template>
   <!-- d2-container 文档 https://doc.d2admin.fairyever.com/zh/sys-components/container.html -->
   <d2-container class="page-report">
-    <template slot="header">report</template>
+    <template slot="header">举报审核</template>
     <fixed-table/>
-    <template slot="footer">自动生成 1 个组件</template>
+    <template slot="footer">联系我们 © 吃瓜小队</template>
   </d2-container>
 </template>
 

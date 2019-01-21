@@ -1,20 +1,20 @@
 <template>
   <!-- d2-container 文档 https://doc.d2admin.fairyever.com/zh/sys-components/container.html -->
   <d2-container class="page-question">
-    <template slot="header">question</template>
-    <tag-message-list/>
-    <template slot="footer">自动生成 1 个组件</template>
+    <template slot="header">问题审核</template>
+    <tab-table/>
+    <template slot="footer">联系我们 © 吃瓜小队</template>
   </d2-container>
 </template>
 
 <script>
 // 组件
-import TagMessageList from './components/TagMessageList/index'
+import TabTable from './components/TabTable/index'
 // 请删除下面代码中你不需要的部分
 export default {
   name: 'question',
   components: {
-    TagMessageList
+    TabTable
   },
   // 数据
   data () {

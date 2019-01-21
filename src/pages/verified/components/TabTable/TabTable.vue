@@ -48,31 +48,35 @@ export default {
       tabKey: 'all',
       dataSource: [],
       tabs: [
-        { tab: '全部', key: 'all' },
-        { tab: '已发布', key: 'inreview' },
-        { tab: '审核中', key: 'released' },
+        { tab: '待认证', key: 'all' },
+        { tab: '已认证', key: 'inreview' },
         { tab: '已拒绝', key: 'rejected' },
       ],
       columns: [
         {
-          title: '标题',
+          title: '用户名',
           dataIndex: 'title',
           key: 'title',
         },
         {
-          title: '作者',
+          title: '姓名',
           dataIndex: 'author',
           key: 'author',
         },
         {
-          title: '状态',
+          title: '身份证号',
           dataIndex: 'status',
           key: 'status',
         },
         {
-          title: '发布时间',
+          title: '注册时间',
           dataIndex: 'date',
           key: 'date',
+        },
+        {
+          title: '查看附件',
+          dataIndex: 'status',
+          key: 'status',
         },
         {
           title: '操作',

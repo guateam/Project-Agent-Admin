@@ -1,17 +1,17 @@
 <template>
   <div class="tag-message-list">
     <basic-container>
-       <el-tabs v-model="activeTab" @tab-click="handleClick">
-        <el-tab-pane label="我的消息" name="message">
+       <el-tabs v-model="文章审核" @tab-click="handleClick">
+        <el-tab-pane label="待审核文章" name="message">
         <div class="message-item" v-for="message in messageList" :key="message.title">
           <a href="##" class="title">
             {{message.title}}
           </a>
           <div class="date">{{message.date}}</div>
         </div>
-        <el-button type="text" class="show-more"> 查看全部消息</el-button>
+        <el-button type="text" class="show-more"> 查看全部文章</el-button>
         </el-tab-pane>
-        <el-tab-pane label="待我处理" name="todo">
+        <el-tab-pane label="已审核通过" name="todo">
           <p class="placeholder"> 暂无数据 </p>
         </el-tab-pane>
       </el-tabs>

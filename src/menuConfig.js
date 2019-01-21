@@ -15,8 +15,12 @@ const asideMenuConfig = [
     icon: 'folder-o',
     children: [
       {
-        name: '从业者管理',
+        name: '普通用户管理',
         path: '/user/',
+      },
+      {
+        name: '专家账号',
+        path: '/expert', // icon: 'home',
       },
       {
         name: '企业账号',

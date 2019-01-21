@@ -23,14 +23,15 @@
         </el-table-column>
         <el-table-column
           prop="tag"
-          label="标签"
+          label="分类"
           width="100"
-          :filters="[{ text: '家', value: '家' }, { text: '公司', value: '公司' }]"
+          :filters="[{ text: '问题', value: '问题' }, { text: '回答', value: '回答' },{ text: '评论', value: '评论' },{ text: '文章', value: '文章' },{ text: '用户', value: '用户' }]"
           :filter-method="filterTag"
           filter-placement="bottom-end">
           <template slot-scope="scope">
             <el-tag
-              :type="scope.row.tag === '家' ? 'primary' : 'success'"
+              :type="scope.row.tag === '用户' ? 'primary' : 'success'"
+              :style="tagSytle"
               close-transition>{{scope.row.tag}}</el-tag>
           </template>
         </el-table-column>
@@ -74,11 +75,14 @@ import BasicContainer from '@vue-materials/basic-container'
 
   data() {
     return {
+      tagSytle:{
+
+      },
       tableData3: [{
         date: '2016-05-03',
         name: '王小虎',
         province: '上海',
-        tag: '公司',
+        tag: '评论',
         city: '普陀区',
         address: '上海市普陀区金沙江路 1518 弄',
         zip: 200333
@@ -86,7 +90,7 @@ import BasicContainer from '@vue-materials/basic-container'
         date: '2016-05-02',
         name: '王小虎',
         province: '上海',
-        tag: '公司',
+        tag: '回答',
         city: '普陀区',
         address: '上海市普陀区金沙江路 1518 弄',
         zip: 200333
@@ -94,7 +98,7 @@ import BasicContainer from '@vue-materials/basic-container'
         date: '2016-05-04',
         name: '王小虎',
         province: '上海',
-        tag: '家',
+        tag: '用户',
         city: '普陀区',
         address: '上海市普陀区金沙江路 1518 弄',
         zip: 200333
@@ -102,7 +106,7 @@ import BasicContainer from '@vue-materials/basic-container'
         date: '2016-05-01',
         name: '王小虎',
         province: '上海',
-        tag: '公司',
+        tag: '文章',
         city: '普陀区',
         address: '上海市普陀区金沙江路 1518 弄',
         zip: 200333
@@ -110,7 +114,7 @@ import BasicContainer from '@vue-materials/basic-container'
         date: '2016-05-08',
         name: '王小虎',
         province: '上海',
-        tag: '家',
+        tag: '用户',
         city: '普陀区',
         address: '上海市普陀区金沙江路 1518 弄',
         zip: 200333
@@ -118,7 +122,7 @@ import BasicContainer from '@vue-materials/basic-container'
         date: '2016-05-06',
         name: '王小虎',
         province: '上海',
-        tag: '公司',
+        tag: '文章',
         city: '普陀区',
         address: '上海市普陀区金沙江路 1518 弄',
         zip: 200333
@@ -126,7 +130,7 @@ import BasicContainer from '@vue-materials/basic-container'
         date: '2016-05-07',
         name: '王小虎',
         province: '上海',
-        tag: '公司',
+        tag: '问题',
         city: '普陀区',
         address: '上海市普陀区金沙江路 1518 弄',
         zip: 200333

@@ -49,7 +49,7 @@ export default {
       dataSource: [],
       tabs: [
         { tab: '全部', key: 'all' },
-        { tab: '已封禁', key: 'inreview' },
+        { tab: '已发布', key: 'inreview' },
         { tab: '审核中', key: 'released' },
         { tab: '已拒绝', key: 'rejected' }
       ],
@@ -60,17 +60,17 @@ export default {
           key: 'title'
         },
         {
-          title: '签名',
-          dataIndex: 'author',
-          key: 'author'
-        },
-        {
           title: '状态',
           dataIndex: 'status',
           key: 'status'
         },
         {
           title: '注册时间',
+          dataIndex: 'date',
+          key: 'date'
+        },
+        {
+          title: '认证时间',
           dataIndex: 'date',
           key: 'date'
         },
