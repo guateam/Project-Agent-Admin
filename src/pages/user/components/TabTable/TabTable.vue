@@ -34,6 +34,7 @@ import BasicContainer from '@vue-materials/basic-container'
 import DeleteBalloon from './components/DeleteBalloon'
 import EditDialog from './components/EditDialog'
 import response from './tab-table.json'
+import request from '../../../../plugin/axios'
 
 export default {
   components: {
@@ -92,6 +93,10 @@ export default {
 
   mounted () {
     this.dataSource = response.data
+    request.get('/account/back_get_users').then(res => {
+      window.console.log(res)
+    })
+
   },
 
   methods: {

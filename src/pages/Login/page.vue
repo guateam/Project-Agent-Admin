@@ -82,8 +82,8 @@ export default {
       ],
       // 表单
       formLogin: {
-        username: 'admin',
-        password: 'admin',
+        username: 'zhangyu199946@126.com',
+        password: 'zhangyuk',
         code: 'v9am'
       },
       // 校验
