@@ -2,7 +2,7 @@
 const resolve = dir => require('path').join(__dirname, dir)
 
 // 基础路径 注意发布之前要先修改这里
-let baseUrl = 'http://localhost:5000/api'
+let baseUrl = '/'
 
 module.exports = {
   baseUrl: baseUrl, // 根据你的实际情况更改这里
