@@ -34,6 +34,7 @@ import BasicContainer from '@vue-materials/basic-container'
 import DeleteBalloon from './components/DeleteBalloon'
 import EditDialog from './components/EditDialog'
 import response from './tab-table.json'
+import request from '../../../../plugin/axios'
 
 export default {
   components: {
@@ -49,15 +50,15 @@ export default {
       dataSource: [],
       tabs: [
         { tab: '全部', key: 'all' },
-        { tab: '已发布', key: 'inreview' },
-        { tab: '审核中', key: 'released' },
+        { tab: '已通过', key: 'confirm' },
+        { tab: '审核中', key: 'wait' },
         { tab: '已拒绝', key: 'rejected' }
       ],
       columns: [
         {
           title: '用户名',
           dataIndex: 'title',
-          key: 'title'
+          key: 'nickname'
         },
         {
           title: '状态',
@@ -92,6 +93,16 @@ export default {
 
   mounted () {
     this.dataSource = response.data
+    // 获取专家列表
+    request({
+      url: '/account/back_get_specialist_users',
+      methods: 'get'
+    }).then(res => {
+      window.console.log(res)
+      // 下面一行是替换表格内容为后台数据，接口确认无误后应取消注释
+      // this.dataSource = res
+    })
+
   },
 
   methods: {
