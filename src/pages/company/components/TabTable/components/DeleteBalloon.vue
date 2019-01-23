@@ -3,7 +3,7 @@
           placement="bottom"
           width="160"
           v-model="visible">
-    <p>确认注销改账号？</p>
+    <p>确认注销该账号？</p>
     <div style="text-align: left; margin: 0">
       <el-button type="danger" size="mini" @click="handleHide(1)" round>确认</el-button>
       <el-button size="mini" @click="handleHide(0)" round>关闭</el-button>

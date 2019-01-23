@@ -50,20 +50,21 @@ export default {
       dataSource: [],
       tabs: [
         { tab: '全部', key: 'all' },
-        { tab: '已封禁', key: 'inreview' },
-        { tab: '审核中', key: 'released' },
-        { tab: '已拒绝', key: 'rejected' }
+        { tab: '已封禁', key: 'banned' },
+        { tab: '审核中', key: 'un_identity' },
+        { tab: '已拒绝', key: 'refuse' },
+        { tab: '已确认', key: 'confirm' }
       ],
       columns: [
         {
           title: '用户名',
           dataIndex: 'title',
-          key: 'title'
+          key: 'nickname'
         },
         {
-          title: '签名',
+          title: '等级',
           dataIndex: 'author',
-          key: 'author'
+          key: 'level'
         },
         {
           title: '状态',
@@ -93,8 +94,14 @@ export default {
 
   mounted () {
     this.dataSource = response.data
-    request.get('/account/back_get_users').then(res => {
+    // 获取普通从业者信息
+    request({
+      url: '/account/back_get_normal_users',
+      methods: 'get'
+    }).then(res => {
       window.console.log(res)
+      // 下面一行是替换表格内容为后台数据，接口确认无误后应取消注释
+      // this.dataSource = res
     })
 
   },
