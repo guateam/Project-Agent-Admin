@@ -15,6 +15,7 @@ import Article from './pages/article';
 import Answer from './pages/answer';
 import Question from './pages/question';
 import Expert from './pages/expert';
+import UserDetail from './pages/user-detail';
 import HeaderAside from './layouts/HeaderAside'; // 变量名 routerConfig 为 iceworks 检测关键字
 // ice 会自动在这个变量下添加路由数据
 // 请不要修改名称
@@ -31,7 +32,14 @@ import HeaderAside from './layouts/HeaderAside'; // 变量名 routerConfig 为 i
 // 下面两个页面就是对比 你可以分别观察两个页面上显示的路由数据差异
 
 const routerConfig = [
-  // 页面重定向 必须保留
+  {
+    path: '/answer',
+    layout: HeaderAside,
+    component: Answer,
+    meta: {
+      title: '回答审核',
+    },
+  }, // 页面重定向 必须保留
   {
     path: '/redirect/:route*',
     name: 'redirect',
@@ -43,14 +51,6 @@ const routerConfig = [
       },
 
       render: h => h(),
-    },
-  },
-  {
-    path: '/question',
-    layout: HeaderAside,
-    component: Question,
-    meta: {
-      title: '问题审核',
     },
   }, // 首页 必须 name:index
   {
@@ -97,11 +97,11 @@ const routerConfig = [
     },
   },
   {
-    path: '/answer',
+    path: '/question',
     layout: HeaderAside,
-    component: Answer,
+    component: Question,
     meta: {
-      title: '回答审核',
+      title: '问题审核',
     },
   },
   {
@@ -142,6 +142,14 @@ const routerConfig = [
     component: Expert,
     meta: {
       title: '专家账号',
+    },
+  },
+  {
+    path: '/userDetail',
+    layout: HeaderAside,
+    component: UserDetail,
+    meta: {
+      title: '用户详情',
     },
   },
 ]; // 不参与菜单显示的

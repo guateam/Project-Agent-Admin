@@ -1,18 +1,18 @@
-<template> 
+<template>
   <div :style="style.editDialog">
-    <el-button @click="handleColumnClick(row)" type="primary" size="mini" round v-if="key === 'action'">编辑</el-button>
-    <el-dialog title="编辑" :visible.sync="dialogFormVisible">
+    <el-button @click="handleColumnClick(row)" type="primary" size="mini" round v-if="key === 'action'">查看详情</el-button>
+    <el-dialog title="用户详情" :visible.sync="dialogFormVisible">
       <el-form :model="formRow" :rules="rules" ref="ruleForm">
-        <el-form-item label="标题" :label-width="formLabelWidth" prop="title">
+        <el-form-item label="用户名" :label-width="formLabelWidth" prop="title">
           <el-input v-model="formRow.title"></el-input>
         </el-form-item>
-        <el-form-item label="作者" :label-width="formLabelWidth" prop="author">
+        <el-form-item label="姓名" :label-width="formLabelWidth" prop="author">
           <el-input v-model="formRow.author"></el-input>
         </el-form-item>
-        <el-form-item label="状态" :label-width="formLabelWidth" prop="status">
+        <el-form-item label="手机号" :label-width="formLabelWidth" prop="status">
           <el-input v-model="formRow.status"></el-input>
         </el-form-item>
-        <el-form-item label="发布时间" :label-width="formLabelWidth" prop="date">
+        <el-form-item label="身份证号" :label-width="formLabelWidth" prop="date">
           <el-input v-model="formRow.date"></el-input>
         </el-form-item>
       </el-form>
