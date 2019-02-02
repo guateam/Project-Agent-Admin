@@ -32,11 +32,12 @@
 </template>
 
 <script>
-    import BasicContainer from '@vue-materials/basic-container'
-    import DeleteBalloon from './components/DeleteBalloon'
-    import EditDialog from './components/EditDialog'
-    import response from './tab-table.json'
-    import request from '../../../../plugin/axios'
+import BasicContainer from '@vue-materials/basic-container'
+import DeleteBalloon from './components/DeleteBalloon'
+import EditDialog from './components/EditDialog'
+import response from './tab-table.json'
+import request from '../../../../plugin/axios'
+import qs from 'qs'
 
     export default {
         components: {
