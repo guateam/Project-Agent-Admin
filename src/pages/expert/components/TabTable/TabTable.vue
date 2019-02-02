@@ -52,12 +52,16 @@ export default {
         { tab: '全部', key: 'all' },
         { tab: '已通过', key: 'confirm' },
         { tab: '审核中', key: 'wait' },
-        { tab: '已拒绝', key: 'rejected' }
       ],
       columns: [
         {
+          title:'账号ID',
+          dataIndex:'userID',
+          key:'userID'
+        },
+        {
           title: '用户名',
-          dataIndex: 'title',
+          dataIndex: 'nickname',
           key: 'nickname'
         },
         {
@@ -67,18 +71,13 @@ export default {
         },
         {
           title: '注册时间',
-          dataIndex: 'date',
-          key: 'date'
-        },
-        {
-          title: '认证时间',
-          dataIndex: 'date',
-          key: 'date'
+          dataIndex: 'create_time',
+          key: 'create_time'
         },
         {
           title: '上次登录时间',
-          dataIndex: 'date',
-          key: 'date'
+          dataIndex: 'last_login',
+          key: 'last_login'
         },
         {
           title: '操作',
@@ -98,9 +97,9 @@ export default {
       url: '/account/back_get_specialist_users',
       methods: 'get'
     }).then(res => {
-      window.console.log(res)
+      window.console.log(res);
       // 下面一行是替换表格内容为后台数据，接口确认无误后应取消注释
-      // this.dataSource = res
+      this.dataSource = res
     })
 
   },
