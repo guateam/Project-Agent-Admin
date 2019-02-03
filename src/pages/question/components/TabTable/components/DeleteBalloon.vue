@@ -20,6 +20,10 @@ export default {
     };
   },
   props: {
+    row: {
+      type: Object,
+      default: {},
+    },
     key: {
       type: String,
       default: '',
@@ -36,7 +40,7 @@ export default {
   methods: {
     handleHide(code) {
       if (parseInt(code) === 1) {
-        this.$emit('handleRemove', this.index, this.tabKey);
+        this.$emit('handleRemove', this.row);
       }
       this.visible = false;
     },

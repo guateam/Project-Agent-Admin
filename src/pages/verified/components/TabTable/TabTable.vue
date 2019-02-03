@@ -19,7 +19,8 @@
                             <template slot-scope="scope">
                                 <span v-if="item.key !== 'action'">{{scope.row[item.dataIndex]}}</span>
                                 <edit-dialog :row="scope.row" :key.sync="item.key" :index="scope.$index"
-                                             :tabKey="tabKey" @handleMod="handleMod" @reloadData="reloadData"></edit-dialog>
+                                             :tabKey="tabKey" @handleMod="handleMod"
+                                             @reloadData="reloadData"></edit-dialog>
                                 <delete-balloon :key.sync="item.key" :index="scope.$index" :tabKey="tabKey"
                                                 @handleRemove="handleRemove"></delete-balloon>
                             </template>
@@ -115,15 +116,15 @@
 
         methods: {
             get_list() {
-              this.dataSource = response.data;
-              request({
-                url: '/account/get_verify_list',
-                methods: 'get'
-              }).then(res => {
-                window.console.log(res);
-                // 下面一行是替换表格内容为后台数据，接口确认无误后应取消注释
-                this.dataSource = res
-              })
+                this.dataSource = response.data;
+                request({
+                    url: '/account/get_verify_list',
+                    methods: 'get'
+                }).then(res => {
+                    window.console.log(res);
+                    // 下面一行是替换表格内容为后台数据，接口确认无误后应取消注释
+                    this.dataSource = res
+                })
             },
             handleClick(tab) {
                 console.log(tab);
@@ -131,40 +132,35 @@
             handleRemove(index, tabKey) {
                 this.dataSource[tabKey].splice(index, 1);
             },
-            handleMod(row, index, tabKey) {
-                this.$set(this.dataSource[tabKey], index, row);
-                window.console.log(row)
+            handleMod(row) {
                 let data = qs.stringify({
-                  'user_id': row['userID'],
-                  'real_name': row['real_name'],
-                  'birthday': row['birthday'],
-                  'nationality': row['nationality'],
-                  'gender': row['gender'],
-                  'address': row['address'],
-                  'number': row['number']
+                    'user_id': row['userID'],
+                    'real_name': row['real_name'],
+                    'birthday': row['birthday'],
+                    'nationality': row['nationality'],
+                    'gender': row['gender'],
+                    'address': row['address'],
+                    'number': row['number']
                 });
                 request({
-                  url: '/account/verify',
-                  method: 'post',
-                  data
+                    url: '/account/verify',
+                    method: 'post',
+                    data
                 }).then(() => {
-                  this.get_list()
+                    this.get_list()
                 })
             },
-            handleAdd(row, tabKey) {
-                this.$set(this.dataSource[tabKey], this.dataSource[tabKey].length, row)
-            },
-            reloadData(row,index,tabKey) {
-              let data = qs.stringify({
-                'user_id': row['userID']
-              })
-              request({
-                url: '/account/not_verify',
-                method: 'post',
-                data
-              })
-                this.dataSource[tabKey].splice(index, 1);
-                this.dataSource[tabKey].push(row)
+            reloadData(row) {
+                let data = qs.stringify({
+                    'user_id': row['userID']
+                });
+                request({
+                    url: '/account/not_verify',
+                    method: 'post',
+                    data
+                }).then(()=>{
+                    this.get_list()
+                });
             }
         },
     }

@@ -106,11 +106,11 @@
               //   this.$emit('handleMod', this.formRow, this.index, this.tabKey)
               //   this.dialogFormVisible = false
               // })
-              this.$emit('handleMod', this.formRow, this.index, this.tabKey);
+              this.$emit('handleMod', this.formRow);
               this.dialogFormVisible = false;
             },
             handleUnSubmit() {
-              this.$emit('reloadData',this.formRow,this.index,this.tabKey);
+              this.$emit('reloadData',this.formRow);
               this.dialogFormVisible = false;
             }
         },
