@@ -38,8 +38,6 @@
 </template>
 
 <script>
-    import request from '@/plugin/axios'
-
     export default {
         data() {
             return {
@@ -101,64 +99,19 @@
                 this.dialogFormVisible = true;
             },
             handleSubmit(formName) {
-                this.$refs[formName].validate((valid) => {
-                    if (!valid) {
-                        return false;
-                    }
-                    this.$emit('handleMod', this.formRow, this.index, this.tabKey);
-                    let data=this.formRow;
-                    request({
-                        url: '/account/verify',
-                        methods: 'post',
-                        data: {
-                            'user_id': data['userID'],
-                            'real_name':data['real_name'],
-                            'birthday':data['birthday'],
-                            'nationality':data['nationality'],
-                            'gender':data['gender'],
-                            'address':data['address'],
-                            'number':data['number']
-                        },
-                        transformRequest: [function (data) {
-                            // Do whatever you want to transform the data
-                            let ret = '';
-                            for (let it in data) {
-                                ret += encodeURIComponent(it) + '=' + encodeURIComponent(data[it]) + '&'
-                            }
-                            return ret
-                        }],
-                        headers: {
-                            'Content-Type': 'application/x-www-form-urlencoded'
-                        }
-                    }).then((data) => {
-
-                    })
-                });
+              // this.$refs[formName].validate((valid) => {
+              //   if (!valid) {
+              //     return false
+              //   }
+              //   this.$emit('handleMod', this.formRow, this.index, this.tabKey)
+              //   this.dialogFormVisible = false
+              // })
+              this.$emit('handleMod', this.formRow, this.index, this.tabKey);
+              this.dialogFormVisible = false;
             },
             handleUnSubmit() {
-                let data = this.formRow;
-                let that = this;
-                request({
-                    url: '/account/not_verify',
-                    method: 'post',
-                    data: {
-                        'user_id': data['userID']
-                    },
-                    transformRequest: [function (data) {
-                        // Do whatever you want to transform the data
-                        let ret = '';
-                        for (let it in data) {
-                            ret += encodeURIComponent(it) + '=' + encodeURIComponent(data[it]) + '&'
-                        }
-                        return ret
-                    }],
-                    headers: {
-                        'Content-Type': 'application/x-www-form-urlencoded'
-                    }
-                }).then((data) => {
-                    that.$emit('reloadData',this.formRow,this.index,this.tabKey);
-                    this.dialogFormVisible = false;
-                })
+              this.$emit('reloadData',this.formRow,this.index,this.tabKey);
+              this.dialogFormVisible = false;
             }
         },
     };
