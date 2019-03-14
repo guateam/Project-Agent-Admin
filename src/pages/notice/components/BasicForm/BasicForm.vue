@@ -7,8 +7,8 @@
                 </el-form-item>
                 <el-form-item label="通知类型" prop="type">
                     <el-radio-group v-model="ruleForm.type">
-                        <el-radio label="全网通知" value="0"></el-radio>
-                        <el-radio label="单点通知" value="1"></el-radio>
+                        <el-radio label="0" >全网通知</el-radio>
+                        <el-radio label="1" >单点通知</el-radio>
                     </el-radio-group>
                 </el-form-item>
                 <el-form-item label="通知目标" prop="target">
@@ -66,7 +66,7 @@
                     let data = qs.stringify({
                         'type': this.ruleForm.type,
                         'content': this.ruleForm.content,
-                        'target': this.ruleForm.target,
+                        'target': this.ruleForm.target===''?0:this.ruleForm.target,
                         'name':this.ruleForm.name
                     });
                     request({

@@ -16,6 +16,8 @@ import Answer from './pages/answer';
 import Question from './pages/question';
 import Expert from './pages/expert';
 import UserDetail from './pages/user-detail';
+import SecondTags from './pages/second_tags';
+import Tags from './pages/tags';
 import HeaderAside from './layouts/HeaderAside'; // 变量名 routerConfig 为 iceworks 检测关键字
 // ice 会自动在这个变量下添加路由数据
 // 请不要修改名称
@@ -39,18 +41,13 @@ const routerConfig = [
     meta: {
       title: '回答审核',
     },
-  }, // 页面重定向 必须保留
+  },
   {
-    path: '/redirect/:route*',
-    name: 'redirect',
+    path: '/article',
     layout: HeaderAside,
-    hidden: true,
-    component: {
-      beforeRouteEnter(to, from, next) {
-        next(vm => vm.$router.replace(JSON.parse(from.params.route)));
-      },
-
-      render: h => h(),
+    component: Article,
+    meta: {
+      title: '文章审核',
     },
   }, // 首页 必须 name:index
   {
@@ -95,6 +92,19 @@ const routerConfig = [
 
       render: h => h(),
     },
+  }, // 页面重定向 必须保留
+  {
+    path: '/redirect/:route*',
+    name: 'redirect',
+    layout: HeaderAside,
+    hidden: true,
+    component: {
+      beforeRouteEnter(to, from, next) {
+        next(vm => vm.$router.replace(JSON.parse(from.params.route)));
+      },
+
+      render: h => h(),
+    },
   },
   {
     path: '/question',
@@ -102,14 +112,6 @@ const routerConfig = [
     component: Question,
     meta: {
       title: '问题审核',
-    },
-  },
-  {
-    path: '/article',
-    layout: HeaderAside,
-    component: Article,
-    meta: {
-      title: '文章审核',
     },
   },
   {
@@ -151,6 +153,19 @@ const routerConfig = [
     meta: {
       title: '用户详情',
     },
+  },
+  {
+    path: '/secondtags',
+    layout: HeaderAside,
+    component: SecondTags,
+  },
+  {
+    path: '/tags',
+    layout: HeaderAside,
+    component: Tags,
+    meta:{
+      title:'标签管理'
+    }
   },
 ]; // 不参与菜单显示的
 // ice 不会处理这部分
