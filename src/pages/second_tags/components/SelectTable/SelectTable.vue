@@ -126,7 +126,32 @@
                 this.tableData = this.tableData.filter(i => !idArray.includes(i.id));
             },
             handleView(row) {
+                request({
+                    url: '/tags/merge_tags',
+                    method: 'get',
+                    params: {
+                        tag_id: row.id,
+                        merge_id:this.selections[1].id
+                    }
+                }).then(res => {
+                    if (res.code === 1){
+                        this.$message({
+                            type: 'success',
+                            message: '操作成功!'
+                        });
+                    }else if(res.code === 0){
+                        this.$message({
+                            type: 'error',
+                            message: '请重新登陆'
+                        });
+                    }else{
+                        this.$message({
+                            type: 'error',
+                            message: '发生错误,无法合并'
+                        });
+                    }
 
+                })
             },
             handleEdit(row) {
                 this.dialogFormVisible1 = true;
