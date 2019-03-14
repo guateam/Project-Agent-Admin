@@ -71,45 +71,43 @@ const asideMenuConfig = [
     {
         name: '系统日志',
         path: '/log/',
-      },
-    ],
-  },
-  {
-    name: '标签管理',
-    icon: 'folder-o',
-    children: [
-      {
-        name: '大标签',
-        path: '/lables/',
-      },
-      {
-        name: '小标签',
-        path: '/smlable',
-      },
-    ],
-  },
-  {
-    name: '推荐管理',
-    path: '/recommend',
-    icon: 'folder-o',
-    children: [
-      {
+    },
+    {
         name: '标签管理',
+        icon: 'folder-o',
+        children: [
+            {
+                name: '大标签',
+                path: '/lables/',
+            },
+            {
+                name: '小标签',
+                path: '/smlable',
+            },
+        ],
+    },
+    {
+        name: '推荐管理',
         path: '/recommend',
-      },
-    ],
-  },
-  {
-    name: '活动发布',
-    path: '/activities',
-    icon: 'folder-o',
-    children: [
-      {
+        icon: 'folder-o',
+        children: [
+            {
+                name: '标签管理',
+                path: '/recommend',
+            },
+        ],
+    },
+    {
         name: '活动发布',
         path: '/activities',
-      },
-    ],
-  },
+        icon: 'folder-o',
+        children: [
+            {
+                name: '活动发布',
+                path: '/activities'
+            },
+        ],
+    }
 ]; // 顶栏菜单配置
 // ice 不会修改 headerMenuConfig
 // 如果你需要功能开发之前就配置出菜单原型，可以只设置 name 字段
