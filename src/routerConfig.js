@@ -16,6 +16,10 @@ import Answer from './pages/answer';
 import Question from './pages/question';
 import Expert from './pages/expert';
 import UserDetail from './pages/user-detail';
+import Lables from './pages/lables';
+import Smlable from './pages/smlable';
+import Recommend from './pages/recommend';
+import Activities from './pages/activities';
 import SecondTags from './pages/second_tags';
 import Tags from './pages/tags';
 import HeaderAside from './layouts/HeaderAside'; // 变量名 routerConfig 为 iceworks 检测关键字
@@ -35,19 +39,19 @@ import HeaderAside from './layouts/HeaderAside'; // 变量名 routerConfig 为 i
 
 const routerConfig = [
   {
-    path: '/answer',
+    path: '/report',
     layout: HeaderAside,
-    component: Answer,
+    component: Report,
     meta: {
-      title: '回答审核',
+      title: '举报审核',
     },
   },
   {
-    path: '/article',
+    path: '/question',
     layout: HeaderAside,
-    component: Article,
+    component: Question,
     meta: {
-      title: '文章审核',
+      title: '问题审核',
     },
   }, // 首页 必须 name:index
   {
@@ -107,19 +111,32 @@ const routerConfig = [
     },
   },
   {
-    path: '/question',
+    path: '/answer',
     layout: HeaderAside,
-    component: Question,
+    component: Answer,
     meta: {
-      title: '问题审核',
+      title: '回答审核',
+    },
+  }, // 页面重定向 必须保留
+  {
+    path: '/redirect/:route*',
+    name: 'redirect',
+    layout: HeaderAside,
+    hidden: true,
+    component: {
+      beforeRouteEnter(to, from, next) {
+        next(vm => vm.$router.replace(JSON.parse(from.params.route)));
+      },
+
+      render: h => h(),
     },
   },
   {
-    path: '/report',
+    path: '/article',
     layout: HeaderAside,
-    component: Report,
+    component: Article,
     meta: {
-      title: '举报审核',
+      title: '文章审核',
     },
   },
   {
@@ -166,6 +183,38 @@ const routerConfig = [
     meta:{
       title:'标签管理'
     }
+  },
+  {
+    path: '/lables',
+    layout: HeaderAside,
+    component: Lables,
+    meta: {
+      title: '大标签',
+    },
+  },
+  {
+    path: '/smlable',
+    layout: HeaderAside,
+    component: Smlable,
+    meta: {
+      title: '小标签',
+    },
+  },
+  {
+    path: '/recommend',
+    layout: HeaderAside,
+    component: Recommend,
+    meta: {
+      title: '推荐发布',
+    },
+  },
+  {
+    path: '/activities',
+    layout: HeaderAside,
+    component: Activities,
+    meta: {
+      title: '活动发布',
+    },
   },
 ]; // 不参与菜单显示的
 // ice 不会处理这部分
