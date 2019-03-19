@@ -18,6 +18,10 @@
                                 :width="item.key !== 'action' ? (item.width || 130) : item.width">
                             <template slot-scope="scope">
                                 <span v-if="item.key !== 'action'">{{scope.row[item.dataIndex]}}</span>
+                                <el-button type="warning" size="mini" round
+                                           v-if="tab.tab==='审核中' && item.key === 'action'" style="margin-right: 0.5em"
+                                           @click="verified(scope.row)">审核
+                                </el-button>
                                 <edit-dialog :row="scope.row" :key.sync="item.key" :index="scope.$index"
                                              :tabKey="tabKey" @handleMod="handleMod"></edit-dialog>
                                 <delete-balloon :key.sync="item.key" :index="scope.$index" :tabKey="tabKey"
@@ -27,6 +31,18 @@
                     </el-table>
                 </el-tab-pane>
             </el-tabs>
+            <el-dialog title="审核企业" :visible.sync="dialogFormVisible">
+                <el-form :model="form">
+                    <el-form-item label="认证资料">
+                        <img :src="form.specialist_license" style="width: 100%;height: auto;">
+                    </el-form-item>
+                </el-form>
+                <div slot="footer" class="dialog-footer">
+                    <el-button @click="dialogFormVisible = false">取 消</el-button>
+                    <el-button type="danger" @click="refuse()">审核不通过</el-button>
+                    <el-button type="primary" @click="confirm()">审核通过</el-button>
+                </div>
+            </el-dialog>
         </basic-container>
     </div>
 </template>
@@ -86,7 +102,12 @@
                         key: 'action'
                     }
                 ],
-                visible: false
+                visible: false,
+                dialogFormVisible: false,
+                form: {
+                    specialist_license: '',
+                    id: ''
+                }
             }
         },
 
@@ -115,6 +136,57 @@
             },
             handleMod(row, index, tabKey) {
                 this.$set(this.dataSource[tabKey], index, row)
+            },
+            verified(row) {
+                this.form.specialist_license = row.specialist_license;
+                this.form.id = row.userID;
+                this.dialogFormVisible = true;
+            },
+            confirm() {
+                request({
+                    url: '/account/confirm_enterprise',
+                    method: 'get',
+                    params: {
+                        user_id: this.form.id
+                    }
+                }).then(res => {
+                    request({
+                        url: '/account/back_get_enterprise_users',
+                        methods: 'get'
+                    }).then(res => {
+                        window.console.log(res);
+                        // 下面一行是替换表格内容为后台数据，接口确认无误后应取消注释
+                        this.dataSource = res;
+                        this.dialogFormVisible=false;
+                        this.form={
+                            specialist_license: '',
+                            id: ''
+                        }
+                    })
+                })
+            },
+            refuse() {
+                request({
+                    url: '/account/refuse_enterprise',
+                    method: 'get',
+                    params: {
+                        user_id: this.form.id
+                    }
+                }).then(res => {
+                    request({
+                        url: '/account/back_get_enterprise_users',
+                        methods: 'get'
+                    }).then(res => {
+                        window.console.log(res);
+                        // 下面一行是替换表格内容为后台数据，接口确认无误后应取消注释
+                        this.dataSource = res;
+                        this.dialogFormVisible=false;
+                        this.form={
+                            specialist_license: '',
+                            id: ''
+                        }
+                    })
+                })
             }
         }
     }
