@@ -54,8 +54,8 @@ const asideMenuConfig = [
             },
             {
                 name: '标签管理',
-                path: '/tags/'
-            }
+                path: '/tags/',
+            },
         ],
     },
     {
@@ -66,101 +66,57 @@ const asideMenuConfig = [
                 name: '通知发布',
                 path: '/notice/',
             },
+            {
+                name: '系统日志',
+                path: '/log/',
+            },
         ],
-    },
+    }, // {
+    //     name: '标签管理',
+    //     icon: 'folder-o',
+    //     children: [
+    //         {
+    //             name: '大标签',
+    //             path: '/lables/',
+    //         },
+    //         {
+    //             name: '小标签',
+    //             path: '/smlable',
+    //         },
+    //     ],
+    // },
+    // {
+    //     name: '推荐管理',
+    //     path: '/recommend',
+    //     icon: 'folder-o',
+    //     children: [
+    //         {
+    //             name: '标签管理',
+    //             path: '/recommend',
+    //         },
+    //     ],
+    // },
     {
-        name: '系统日志',
-        path: '/log/',
-      },
-    ],
-  },
-  {
-    name: '标签管理',
-    icon: 'folder-o',
-    children: [
-      {
-        name: '大标签',
-        path: '/lables/',
-      },
-      {
-        name: '小标签',
-        path: '/smlable',
-      },
-    ],
-  },
-  {
-    name: '推荐管理',
-    path: '/recommend',
-    icon: 'folder-o',
-    children: [
-      {
-        name: '标签管理',
-        path: '/recommend',
-      },
-    ],
-  },
-  {
-    name: '活动发布',
-    path: '/activities',
-    icon: 'folder-o',
-    children: [
-      {
         name: '活动发布',
         path: '/activities',
-      },
-    ],
-  },
+        icon: 'folder-o',
+        children: [
+            {
+                name: '活动管理',
+                path: '/activity'
+            }, {
+                name: '添加活动',
+                path: '/activities'
+            }
+        ],
+    },
 ]; // 顶栏菜单配置
 // ice 不会修改 headerMenuConfig
 // 如果你需要功能开发之前就配置出菜单原型，可以只设置 name 字段
 // D2Admin 会自动添加不重复 id 生成菜单，并在点击时提示这是一个临时菜单
 
 const headerMenuConfig = [
-    {
-        name: '空菜单',
-        icon: 'flask',
-        children: [
-            {
-                name: 'menu 1',
-                children: [
-                    {
-                        name: 'menu 1-1',
-                        children: [
-                            {
-                                name: 'menu 1-1-1',
-                            },
-                            {
-                                name: 'menu 1-1-2',
-                            },
-                        ],
-                    },
-                    {
-                        name: 'menu 1-2',
-                    },
-                ],
-            },
-            {
-                name: 'menu 2',
-            },
-            {
-                name: 'menu 3',
-            },
-        ],
-    },
-    {
-        name: '演示页面',
-        icon: 'folder-o',
-        children: [
-            {
-                name: '演示 1',
-                path: '/demo1/',
-            },
-            {
-                name: '演示 2',
-                path: '/demo2/',
-            },
-        ],
-    },
+
 ]; // 请根据自身业务逻辑修改导出设置，并在合适的位置赋给对应的菜单
 // 参考
 // 设置顶栏菜单的方法 (vuex)

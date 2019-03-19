@@ -1,20 +1,20 @@
 <template>
   <!-- d2-container 文档 https://doc.d2admin.fairyever.com/zh/sys-components/container.html -->
-  <d2-container class="page-activities">
-    <template slot="header">添加活动</template>
-    <basic-form/>
+  <d2-container class="page-activity">
+    <template slot="header">活动管理</template>
+    <fixed-table/>
     <template slot="footer">自动生成 1 个组件</template>
   </d2-container>
 </template>
 
 <script>
 // 组件
-import BasicForm from './components/BasicForm/index'
+import FixedTable from './components/FixedTable/index'
 // 请删除下面代码中你不需要的部分
 export default {
-  name: 'activities',
+  name: 'activity',
   components: {
-    BasicForm
+    FixedTable
   },
   // 数据
   data () {
@@ -41,5 +41,5 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import './Activities.scss';
+@import './Activity.scss';
 </style>

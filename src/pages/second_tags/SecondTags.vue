@@ -1,7 +1,7 @@
 <template>
   <!-- d2-container 文档 https://doc.d2admin.fairyever.com/zh/sys-components/container.html -->
   <d2-container class="page-second_tags">
-    <template slot="header">second_tags</template>
+    <template slot="header">二级标签管理</template>
     <select-table/>
     <template slot="footer">自动生成 1 个组件</template>
   </d2-container>
